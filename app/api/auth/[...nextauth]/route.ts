@@ -26,6 +26,7 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         //Check if email and password has been passed
+
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Invalid Credentials");
         }
@@ -36,6 +37,8 @@ export const authOptions: AuthOptions = {
             email: credentials.email,
           },
         });
+
+        console.log(user);
 
         //Check if user exists
         if (!user || !user?.hashedPassword) {
