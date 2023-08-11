@@ -38,8 +38,6 @@ export const authOptions: AuthOptions = {
           },
         });
 
-        console.log(user);
-
         //Check if user exists
         if (!user || !user?.hashedPassword) {
           throw new Error("Invalid Credentials");
