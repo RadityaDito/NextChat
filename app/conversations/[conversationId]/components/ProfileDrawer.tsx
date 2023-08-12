@@ -45,7 +45,11 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ data, isOpen, onClose }) => {
 
   return (
     <>
-      <Modal isOpen />
+      <Modal isOpen={confirmOpen} onClose={() => setConfirmOpen(false)}>
+        <div className="p-5 bg-white">
+          <p>Hello World</p>
+        </div>
+      </Modal>
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={onClose}>
           <Transition.Child //Transition for backdrop
