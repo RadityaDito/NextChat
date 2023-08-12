@@ -12,7 +12,7 @@ import Avatar from "@/app/components/Avatar";
 // import AvatarGroup from '@/app/components/AvatarGroup';
 // import ConfirmModal from './ConfirmModal';
 import React, { FC, useMemo, Fragment, useState } from "react";
-import Modal from "@/app/components/Modal";
+import ConfirmModal from "./ConfirmModal";
 
 interface ProfileDrawerProps {
   data: Conversation & {
@@ -45,11 +45,11 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ data, isOpen, onClose }) => {
 
   return (
     <>
-      <Modal isOpen={confirmOpen} onClose={() => setConfirmOpen(false)}>
-        <div className="p-5 bg-white">
-          <p>Hello World</p>
-        </div>
-      </Modal>
+      <ConfirmModal
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+      />
+
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={onClose}>
           <Transition.Child //Transition for backdrop
