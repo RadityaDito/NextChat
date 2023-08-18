@@ -9,6 +9,7 @@ import { useSession } from "next-auth/react";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import clsx from "clsx";
 import Avatar from "@/app/components/Avatar";
+import AvatarGroup from "@/app/components/AvatarGroup";
 
 interface ConversationBoxProps {
   data: FullConversationType;
@@ -80,11 +81,16 @@ const ConversationBox: FC<ConversationBoxProps> = ({ data, selected }) => {
         selected ? "bg-neutral-100" : "bg-white"
       )}
     >
-      <Avatar user={otherUser} />
+      {data.isGroup ? (
+        <AvatarGroup users={data.users} />
+      ) : (
+        <Avatar user={otherUser} />
+      )}
+
       <div className="flex-1 min-w-0">
         <div className="focus:outline-none">
           <div className="flex justify-between items-center mb-1">
-            <p className="font-semibold">{otherUser.name}</p>
+            <p className="font-semibold">{data.name || otherUser.name}</p>
             {lastMessage?.createdAt && (
               <p className="text-xs font-light text-gray-400">
                 {format(new Date(lastMessage.createdAt), "p")}

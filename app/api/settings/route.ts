@@ -6,9 +6,10 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, image } = body;
+
     //GetCurrentUser
     const currentUser = await getCurrentUser();
-
+    //If no user return unauthorized
     if (!currentUser?.email || !currentUser?.id) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
