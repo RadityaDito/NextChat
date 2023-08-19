@@ -50,13 +50,39 @@ const ConversationList: FC<ConversationListProps> = ({
       });
     };
 
+    const updateHandler = (conversation: FullConversationType) => {
+      setItems((current) =>
+        current.map((currentConversation) => {
+          if (currentConversation.id === conversation.id) {
+            return { ...currentConversation, messages: conversation.messages };
+          }
+
+          return currentConversation;
+        })
+      );
+    };
+
+    const removeHandler = (conversation: FullConversationType) => {
+      setItems((current) =>
+        current.filter((item) => item.id !== conversation.id)
+      );
+
+      if (conversationId === conversation.id) {
+        router.push("/conversations");
+      }
+    };
+
     pusherClient.bind("conversation:new", newHandler);
+    pusherClient.bind("conversation:update", updateHandler);
+    pusherClient.bind("conversation:remove", removeHandler);
 
     return () => {
       pusherClient.unsubscribe(pusherKey);
       pusherClient.unbind("conversation:new", newHandler);
+      pusherClient.unbind("conversation:update", updateHandler);
+      pusherClient.unbind("conversation:remove", removeHandler);
     };
-  }, []);
+  }, [pusherKey, conversationId, router]);
 
   return (
     <>
