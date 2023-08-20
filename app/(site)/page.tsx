@@ -12,9 +12,9 @@ export default function Home() {
           className="mx-auto"
           src={"/images/logo.png"}
         />
-        <h2 className="font-bold text-3xl text-center mt-6 tracking-tight text-gray-900">
-          Sign in to yout account
-        </h2>
+        {/* <h2 className="font-bold text-3xl text-center mt-6 tracking-tight text-gray-900">
+          Sign in to your account
+        </h2> */}
       </div>
       <AuthForm />
     </div>

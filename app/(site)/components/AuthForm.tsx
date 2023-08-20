@@ -90,51 +90,15 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="mt-8 mx-auto w-full max-w-md">
-      <div className="bg-white shadow sm:rounded-lg px-4 py-8 sm:px-10 ">
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          {variant === "REGISTER" && (
-            <Input
-              id="name"
-              label="Name"
-              register={register}
-              errors={errors}
-              disabled={isLoading}
-            />
-          )}
-          <Input
-            id="email"
-            label="Email address"
-            type="email"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-          />
-          <Input
-            id="password"
-            label="Password"
-            type="password"
-            register={register}
-            errors={errors}
-            disabled={isLoading}
-          />
-          <Button disabled={isLoading} fullWidth type="submit">
-            {variant === "LOGIN" ? "Sign in" : "Register"}
-          </Button>
-        </form>
-
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500 ">
-                Or continue with
-              </span>
-            </div>
-          </div>
-          <div className=" flex  mt-6 gap-2">
+    <>
+      <h2 className="font-bold text-3xl text-center mt-6 tracking-tight text-gray-900">
+        {variant === "REGISTER"
+          ? "Create an account"
+          : "Sign in to your account"}
+      </h2>
+      <div className="mt-8 mx-auto w-full max-w-md">
+        <div className="bg-white shadow sm:rounded-lg px-4 py-8 sm:px-10 ">
+          <div className=" flex  mt-3 gap-2">
             <AuthSocialButton
               icon={BsGithub}
               onClick={() => socialAction("github")}
@@ -144,19 +108,62 @@ const AuthForm = () => {
               onClick={() => socialAction("google")}
             />
           </div>
-        </div>
-        <div className="mt-6 text-gray-500 text-sm px-2 flex justify-center gap-2">
-          <div className="">
-            {variant === "LOGIN"
-              ? "New to Messenger?"
-              : "Already have an account?"}
+
+          <div className="mt-6">
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="bg-white px-2 text-gray-500 ">
+                  OR CONTINUE WITH
+                </span>
+              </div>
+            </div>
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+              {variant === "REGISTER" && (
+                <Input
+                  id="name"
+                  label="Name"
+                  register={register}
+                  errors={errors}
+                  disabled={isLoading}
+                />
+              )}
+              <Input
+                id="email"
+                label="Email address"
+                type="email"
+                register={register}
+                errors={errors}
+                disabled={isLoading}
+              />
+              <Input
+                id="password"
+                label="Password"
+                type="password"
+                register={register}
+                errors={errors}
+                disabled={isLoading}
+              />
+              <Button disabled={isLoading} fullWidth type="submit">
+                {variant === "LOGIN" ? "Sign in" : "Register"}
+              </Button>
+            </form>
           </div>
-          <div className="underline cursor-pointer" onClick={toggleVariant}>
-            {variant === "LOGIN" ? "Create an account" : "Login"}
+          <div className="mt-6 text-gray-500 text-sm px-2 flex justify-center gap-2">
+            <div className="">
+              {variant === "LOGIN"
+                ? "New to Messenger?"
+                : "Already have an account?"}
+            </div>
+            <div className="underline cursor-pointer" onClick={toggleVariant}>
+              {variant === "LOGIN" ? "Create an account" : "Login"}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
