@@ -47,7 +47,7 @@ const Form: FC<FormProps> = ({}) => {
         onUpload={handleUpload}
         uploadPreset="nyqybrbu"
       >
-        <HiPhoto size={30} className="text-sky-500" />
+        <HiPhoto size={30} className="text-green-500" />
       </CldUploadButton>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -62,7 +62,7 @@ const Form: FC<FormProps> = ({}) => {
         />
         <button
           type="submit"
-          className="rounded-full bg-sky-500 cursor-pointer hover:bg-sky-600 p-2"
+          className="rounded-full bg-green-500 cursor-pointer hover:bg-green-600 p-2"
         >
           <HiPaperAirplane size={18} className="text-white" />
         </button>
