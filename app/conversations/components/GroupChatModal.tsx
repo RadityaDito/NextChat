@@ -34,7 +34,6 @@ const GroupChatModal: FC<GroupChatModalProps> = ({
   } = useForm<FieldValues>({
     defaultValues: {
       name: "",
-      members: [],
     },
   });
 

@@ -34,8 +34,8 @@ const MessageBox: FC<MessageBoxProps> = ({ data, isLast }) => {
 
   const message = clsx(
     "text-sm w-fit overflow-hidden relative",
-    isOwn ? "bg-green-500 text-white" : "bg-gray-100",
-    data.image ? "rounded-md p-0" : "rounded-lg py-2 px-3"
+    isOwn ? "bg-green-500 text-white " : "bg-gray-100",
+    data.image ? "rounded-md p-0" : "rounded-lg  py-2 px-3"
   );
 
   return (
